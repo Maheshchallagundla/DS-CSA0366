@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdbool.h>
+#define MAX_REGISTRATIONS 100
+bool searchRegistrationNumber(int regNumbers[], int numRegistrations, int target) {
+    for (int i = 0; i < numRegistrations; i++) {
+        if (regNumbers[i] == target) {
+            return true; 
+        }
+    }
+    return false; 
+}
+
+int main() {
+    int numRegistrations;
+    
+    printf("Enter the number of registrations: ");
+    scanf("%d", &numRegistrations);
+    
+    if (numRegistrations > MAX_REGISTRATIONS) {
+        printf("Error: Too many registrations. Max limit is %d\n", MAX_REGISTRATIONS);
+        return 1; 
+    }
+    
+    int regNumbers[MAX_REGISTRATIONS];
+    
+    printf("Enter the registration numbers:\n");
+    for (int i = 0; i < numRegistrations; i++) {
+        scanf("%d", &regNumbers[i]);
+    }
+    
+    int targetNumber;
+    printf("Enter the registration number to search for: ");
+    scanf("%d", &targetNumber);
+    
+    if (searchRegistrationNumber(regNumbers, numRegistrations, targetNumber)) {
+        printf("Registration number %d found.\n", targetNumber);
+    } else {
+        printf("Registration number %d not found.\n", targetNumber);
+    }
+    
+    return 0;
+}
